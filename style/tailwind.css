@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-void text-gray-200 font-figtree antialiased;
+        overflow-x: hidden;
+    }
+
+    ::selection {
+        @apply bg-aurora-purple text-white;
+    }
+
+    ::-webkit-scrollbar {
+        @apply w-1.5;
+    }
+    
+    ::-webkit-scrollbar-track {
+        @apply bg-void;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply rounded bg-gradient-to-b from-aurora-purple to-aurora-blue;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer components {
+    /*gradiente de texto*/
+    .aurora-text {
+        @apply bg-clip-text text-trasnparent;
+        background-image: linear-gradient(135deg, #9d4edd, #3a86ff, #2ec4b6, #4cc9f0,#c77dff);
+        background-size: 400% 400%;
+        animation: aurora-shift 8s infinite;
+    }
+
+    /*Carta transparente*/
+    .glass {
+        @apply bg-void-light/70 backdrop-blur-xl border border-aurora-purple/15;
+        box-shadow: 0 0 40px rgba(123, 44, 191, 0.04), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    /*Boton Cristal*/
+    .crystal-btn {
+      @apply relative px-8 py-3.5 font-mono text-xs tracking-widset text-white overflow-hidden;
+      clip-path: polygon(8px 0%, calc(100% -8px) 0%, 100% 8px, 100% calc(100% -8px), calc(100%-8px) 100%, 8px 100%, 0% calc(100% -8px), 0% 8px);
+      transition: all 0.3s ease;
+    }
+
+    .crystal-btn::before {
+        content: '';
+        @apply absolute inset-0 opacity-50 transition-opacity duration-300;
+        background: linear-gradient(135deg, rgba(123,44,191,0.3),rgba(58,134,255,0.3),rgba(46,196,182,0.3));
+    }
+
+    .crystal-btn:hover::before {
+        @apply opacity-100;
+    }
+
+    .crystal-btn:hover {
+        @apply -translate-y-0.5;
+        box-shadow: 0 10px 40px rgba(123, 44, 191, 0.3);
+    }
+
+    .crystal-btn-primary {
+        @apply crystal-btn;
+        background: linear-gradient(135deg, #7b2cbf,#3a86ff);
+    }
+
+    /*skills*/
+     
+}
