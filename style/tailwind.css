@@ -15,7 +15,7 @@
     ::-webkit-scrollbar {
         @apply w-1.5;
     }
-    
+
     ::-webkit-scrollbar-track {
         @apply bg-void;
     }
@@ -30,10 +30,11 @@
 }
 
 @layer components {
+
     /*gradiente de texto*/
     .aurora-text {
         @apply bg-clip-text text-trasnparent;
-        background-image: linear-gradient(135deg, #9d4edd, #3a86ff, #2ec4b6, #4cc9f0,#c77dff);
+        background-image: linear-gradient(135deg, #9d4edd, #3a86ff, #2ec4b6, #4cc9f0, #c77dff);
         background-size: 400% 400%;
         animation: aurora-shift 8s infinite;
     }
@@ -41,20 +42,20 @@
     /*Carta transparente*/
     .glass {
         @apply bg-void-light/70 backdrop-blur-xl border border-aurora-purple/15;
-        box-shadow: 0 0 40px rgba(123, 44, 191, 0.04), inset 0 1px 0 rgba(255,255,255,0.04);
+        box-shadow: 0 0 40px rgba(123, 44, 191, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.04);
     }
 
     /*Boton Cristal*/
     .crystal-btn {
-      @apply relative px-8 py-3.5 font-mono text-xs tracking-widset text-white overflow-hidden;
-      clip-path: polygon(8px 0%, calc(100% -8px) 0%, 100% 8px, 100% calc(100% -8px), calc(100%-8px) 100%, 8px 100%, 0% calc(100% -8px), 0% 8px);
-      transition: all 0.3s ease;
+        @apply relative px-8 py-3.5 font-mono text-xs tracking-widset text-white overflow-hidden;
+        clip-path: polygon(8px 0%, calc(100% -8px) 0%, 100% 8px, 100% calc(100% -8px), calc(100%-8px) 100%, 8px 100%, 0% calc(100% -8px), 0% 8px);
+        transition: all 0.3s ease;
     }
 
     .crystal-btn::before {
         content: '';
         @apply absolute inset-0 opacity-50 transition-opacity duration-300;
-        background: linear-gradient(135deg, rgba(123,44,191,0.3),rgba(58,134,255,0.3),rgba(46,196,182,0.3));
+        background: linear-gradient(135deg, rgba(123, 44, 191, 0.3), rgba(58, 134, 255, 0.3), rgba(46, 196, 182, 0.3));
     }
 
     .crystal-btn:hover::before {
@@ -68,9 +69,173 @@
 
     .crystal-btn-primary {
         @apply crystal-btn;
-        background: linear-gradient(135deg, #7b2cbf,#3a86ff);
+        background: linear-gradient(135deg, #7b2cbf, #3a86ff);
+    }
+
+    /*Terminal*/
+    .terminal {
+        @apply font-mono bg-void/90 border border-aurora-purple rounded-xl overflow-hidden;
+        box-shadow: 0 0 30px rgba(123, 44, 191, 0.1), inset 0 0 20px rgba(123, 44, 191, 0.03);
+    }
+
+    .terminal-bar {
+        @apply flex items-center gap-2 px-4 py-3;
+        background: linear-gradient(90deg, #7b2cbf, #3a86ff);
     }
 
     /*skills*/
-     
+    .hex-skill {
+        @apply w-[120px] h-[138px] flex flex-col items-center justify-center relative transition-all duration-300;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        background: rgba(123, 44, 191, 0.08);
+        border: 1px solid rgba(123, 44, 191, 0.25);
+    }
+
+    .hex-skill:hover {
+        @apply bg-aurora-purple/20 border-aurora-purple-light -translate-y-1.5 scale-105;
+        box-shadow: 0 0 30px rgba(123, 44, 191, 0.3);
+    }
+
+    /**TARJETAS DE PROJECTO*/
+    .project-card {
+        @apply relative overflow-hidden bg-void-light border border-gray-midrounded-2xl transition-all duration-500;
+        transform-style: preserve-3d;
+    }
+
+    .project-card::before {
+        content: '';
+        @apply absolute -top-1/2 -left-1/2 w-[200%] h-[200%] opacity-0 transition-opacity duration-400;
+        background: conic-gradient(from 0deg, transparent, #7b2cbf, #3a86ff, #2ec4b6, transparent);
+        animation: crystal-rotate 5s linear infinite;
+    }
+
+    .project-card:hover:before {
+        @apply opacity-10;
+    }
+
+    .project-card:hover {
+        @apply border-aurora-purple-light -translate-y-1.5;
+        box-shadow: 0 0 50px rgba(123, 44, 191, 0.15), inset 0 0 30px rgba(123, 44, 191, 0.04);
+    }
+
+    /*Icono de navegacion* diamantes*/
+    .nav-dot {
+        @apply w-3 h-3 bg-gray-mid rotate-45 transition-all duration-300 relative;
+    }
+
+    .nav-dot::after {
+        content: '';
+        @apply absolute -inset-1 border border-transparent transition-all duration-300;
+    }
+
+    .nav-dot:hover,
+    .nav-dot.active {
+        @apply bg-aurora-purple-light;
+        box-shadow: 0 0 12px #c77dff;
+    }
+
+    .nav-dot:hover::after,
+    .nav-dot.active::after {
+        @apply border-aurora-purple-light;
+    }
+
+    /*Animacion de relevacion*/
+    .reveal {
+        @apply opacity-0 translate-y-10 transition-all duration-700;
+        transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .reveal.visible {
+        @apply opacity-100 translate-y-0;
+    }
+
+    .reveal-left {
+        @apply opacity-0 -translate-x-10 trasnition-all duration-700;
+        transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .reveal-left.visible {
+        @apply opacity-100 translate-x-0;
+    }
+
+    .reveal-right {
+        @apply opacity-0 -translate-x-10 trasnition-all duration-700;
+        transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .reveal-right.visible {
+        @apply opacity-100 translate-x-0;
+    }
+
+    /*Focus de inputs */
+
+    .form-input-purple:focus {
+        @apply border-aurora-purple;
+        box-shadow: 0 0 20px rgba(123, 44, 191, 0.2);
+    }
+
+    .form-input-blue:focus {
+        @apply border-aurora-blue;
+        box-shadow: 0 0 20px rgba(58, 134, 255, 0.2);
+    }
+
+    .form-input-green:focus {
+        @apply border-aurora-green;
+        box-shadow: 0 0 20px rgba(46, 196, 182, 0.2);
+    }
+
+    /* Glicht en el texto*/
+    .glitch {
+        @apply relative inline-block;
+    }
+
+    .glitch::before,
+    .glitch::after {
+        content: attr(data-text);
+        @apply absolute top-0 left-0 w-full h-full;
+    }
+
+    .glitch::before {
+        @apply left-0.5;
+        text-shadow: -2px 0 #c77dff;
+        clip-path: inset(24px -9999px 90px 0);
+        animation: glitch1 4s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+        @apply -left-0.5;
+        text-shadow: 2px 0 #3bf4fb;
+        clip-path: inset(85px -9999px 140px 0);
+        animation: glitch2 3s infinite linear alternate-reverse;
+    }
+
+    /*Cintas*/
+    .aurora-ribbon {
+        @apply absolute w-[200%] h-[280px] blur-[90px] opacity-15;
+        animation: aurora-flow 22s ease-in-out infinite;
+    }
+
+    .aurora-ribbon-1 {
+        background: linear-gradient(90deg, transparent, #7b2cbf, #3a86ff, transparent);
+        @apply top-[8%] -left-1/2 -rotate-[4deg];
+    }
+
+    .aurora-ribbon-2 {
+        background: linear-gradient(90deg, transparent, #2ec4b6, #4cc9f0, transparent);
+        @apply top-[38%] -left-1/2 rotate-[3deg] h-[220px];
+        animation-delay: -8s;
+    }
+
+    .aurora-ribbon-3 {
+        background: linear-gradient(90deg, transparent, #4cc9f0, #9d4edd, transparent);
+        @apply top-[68%] -left-1/2 -rotate-[2deg] h-[320px];
+        animation-delay: -15s;
+    }
+}
+
+@layer utilities {
+    .typing-cursor::after {
+        content: '_';
+        @apply text-aurora-green-light animate-blink
+    }
 }
