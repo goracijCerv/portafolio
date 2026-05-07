@@ -104,7 +104,9 @@
 
     /* Carta transparente */
     .glass {
-        @apply bg-void-light/70 backdrop-blur-xl border border-aurora-purple/15;
+        @apply backdrop-blur-xl border;
+        background-color: color-mix(in srgb, var(--void-light) 70%, transparent);
+        border-color: color-mix(in srgb, var(--aurora-purple) 15%, transparent);
         box-shadow: 0 0 40px rgba(123, 44, 191, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.04);
     }
 
@@ -137,7 +139,8 @@
 
     /* Terminal */
     .terminal {
-        @apply font-mono bg-void/90 border border-aurora-purple rounded-xl overflow-hidden;
+        @apply font-mono border border-aurora-purple rounded-xl overflow-hidden;
+        background-color: color-mix(in srgb, var(--void) 90%, transparent);
         box-shadow: 0 0 30px rgba(123, 44, 191, 0.1), inset 0 0 20px rgba(123, 44, 191, 0.03);
     }
 
@@ -155,7 +158,8 @@
     }
 
     .hex-skill:hover {
-        @apply bg-aurora-purple/20 border-aurora-purple-light -translate-y-1.5 scale-105;
+        @apply border-aurora-purple-light -translate-y-1.5 scale-105;
+        background-color: color-mix(in srgb, var(--aurora-purple) 20%, transparent);
         box-shadow: 0 0 30px rgba(123, 44, 191, 0.3);
     }
 
@@ -273,7 +277,7 @@
 
     /* Cintas (Ribbons) */
     .aurora-ribbon {
-        @apply absolute w-[200%] h-[280px] blur-[90px] opacity-15;
+        @apply absolute w-[200%] h-[280px] blur-[90px] opacity-[15%];
         animation: aurora-flow 22s ease-in-out infinite;
     }
 

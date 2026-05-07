@@ -44,6 +44,7 @@ module.exports = {
                 'spin-slow': 'spin 2s linear infinite',
                 'pulse-loader': 'pulse-loader 2s ease-in-out infinite',
                 'crystal-rotate': 'crystal-rotate 5s linear infinite',
+                'load-fill': 'load-fill 2s ease-in-out forwards'
             },
             keyframes: {
                 'aurora-shift': {
@@ -91,6 +92,9 @@ module.exports = {
                 },
                 'crystal-rotate': {
                     to: { transform: 'rotate(360deg)' },
+                },
+                'load-fill': {                                    // <-- AÑADE ESTO
+                    to: { left: '0' },
                 },
             },
         },
