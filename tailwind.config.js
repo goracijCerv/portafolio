@@ -1,26 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        "./src/**/*.rs",           // Scan Rust files
+        "./src/**/*.rs",
         "./index.html",
     ],
     theme: {
         extend: {
             colors: {
-                void: '#08080a',
-                'void-light': '#12121a',
-                'gray-deep': '#1a1a2e',
-                'gray-mid': '#2d2d44',
-                'gray-light': '#4a4a6a',
-                'aurora-purple': '#7b2cbf',
-                'aurora-purple-light': '#9d4edd',
-                'aurora-purple-glow': '#c77dff',
-                'aurora-blue': '#3a86ff',
-                'aurora-blue-light': '#4cc9f0',
-                'aurora-blue-glow': '#90e0ef',
-                'aurora-green': '#2ec4b6',
-                'aurora-green-light': '#3bf4fb',
-                'aurora-green-glow': '#72efdd',
+                void: 'var(--void)',
+                'void-light': 'var(--void-light)',
+                'gray-deep': 'var(--gray-deep)',
+                'gray-mid': 'var(--gray-mid)',
+                'gray-light': 'var(--gray-light)',
+                'text-main': 'var(--text-main)',
+                'text-heading': 'var(--text-heading)',
+
+                'aurora-purple': 'var(--aurora-purple)',
+                'aurora-purple-light': 'var(--aurora-purple-light)',
+                'aurora-purple-glow': 'var(--aurora-purple-glow)',
+
+                'aurora-blue': 'var(--aurora-blue)',
+                'aurora-blue-light': 'var(--aurora-blue-light)',
+                'aurora-blue-glow': 'var(--aurora-blue-glow)',
+
+                'aurora-green': 'var(--aurora-green)',
+                'aurora-green-light': 'var(--aurora-green-light)',
+                'aurora-green-glow': 'var(--aurora-green-glow)',
             },
             fontFamily: {
                 sans: ['Space Grotesk', 'sans-serif'],
