@@ -96,10 +96,9 @@
 
     /* Gradiente de texto dinámico */
     .aurora-text {
-        @apply bg-clip-text text-transparent;
+        @apply bg-clip-text text-transparent animate-aurora-shift;
         background-image: linear-gradient(135deg, var(--aurora-purple-light), var(--aurora-blue), var(--aurora-green), var(--aurora-blue-light), var(--aurora-purple-glow));
         background-size: 400% 400%;
-        animation: aurora-shift 8s infinite;
     }
 
     /* Carta transparente */
@@ -262,23 +261,20 @@
     }
 
     .glitch::before {
-        @apply left-0.5;
+        @apply left-0.5 animate-glitch1;
         text-shadow: -2px 0 var(--aurora-purple-glow);
         clip-path: inset(24px -9999px 90px 0);
-        animation: glitch1 4s infinite linear alternate-reverse;
     }
 
     .glitch::after {
-        @apply -left-0.5;
+        @apply -left-0.5 animate-glitch2;
         text-shadow: 2px 0 var(--aurora-green-light);
         clip-path: inset(85px -9999px 140px 0);
-        animation: glitch2 3s infinite linear alternate-reverse;
     }
 
     /* Cintas (Ribbons) */
     .aurora-ribbon {
-        @apply absolute w-[200%] h-[280px] blur-[90px] opacity-[15%];
-        animation: aurora-flow 22s ease-in-out infinite;
+        @apply absolute w-[200%] h-[280px] blur-[90px] opacity-[15%] animate-aurora-flow;
     }
 
     .aurora-ribbon-1 {

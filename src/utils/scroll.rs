@@ -2,6 +2,9 @@ use leptos::prelude::*;
 use leptos::ev; // Eventos nativos de Leptos
 use std::cell::Cell;
 use std::rc::Rc;
+use leptos::task::spawn_local;
+use wasm_bindgen::prelude::*;
+use web_sys::{IntersectionObserver, IntersectionObserverEntry, IntersectionObserverInit, Element};
 
 pub fn use_scroll_progress() -> ReadSignal<f64> {
     let (progress, set_progress) = signal(0.0);
@@ -44,4 +47,45 @@ fn calculate_scroll_percentage(window: &web_sys::Window) -> Option<f64> {
     
     let max_scroll = (scroll_height - client_height).max(1.0);
     Some((scroll_top / max_scroll * 100.0).clamp(0.0, 100.0))
+}
+
+
+pub fn use_reveal_observer() {
+    spawn_local(async move {
+        let _ = leptos::prelude::request_animation_frame(move || {
+            let document = web_sys::window().unwrap().document().unwrap();
+             //se ejecutara cuando entre en la pantalla
+            let clousre = Closure::wrap(Box::new(move |entries: js_sys::Array|  {
+                for entry in entries.iter() {
+                    let  entry: IntersectionObserverEntry = entry.unchecked_into();
+                    if entry.is_intersecting() {
+                        let target = entry.target();
+                        if let Some(el) = target.dyn_ref::<Element>(){
+                            let _ = el.class_list().add_1("visible");
+                        }
+                    }
+                }
+            }) as Box<dyn FnMut(js_sys::Array)>);
+
+            let options = IntersectionObserverInit::new();
+            options.set_threshold(&js_sys::Array::of1(&JsValue::from_f64(0.08)));
+            options.set_root_margin("0px 0px -40px 0px");
+
+            let observer = IntersectionObserver::new_with_options(
+                clousre.as_ref().unchecked_ref(), 
+                &options).unwrap();
+            
+            if let Ok(elements) = document.query_selector_all(".reveal, .reveal-left, .reveal-right") {
+                for i in 0..elements.length() {
+                    if let Some(node) = elements.item(i) {
+                        if let Ok(el) = node.dyn_into::<Element>() {
+                            observer.observe(&el);
+                        }
+                    }
+                }
+            }
+
+            clousre.forget();
+        });
+    });
 }

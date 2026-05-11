@@ -5,7 +5,9 @@ pub mod components;
 pub mod utils;
 
  use components::{
-    loading::Loading
+    loading::Loading,
+    navigation::Navigation,
+    hero::Hero,
  };
 
 #[component]
@@ -13,7 +15,9 @@ pub fn App() -> impl IntoView {
     view! {
         <Loading />
         <BackGround />
+        <Navigation />
         <main>
+            <Hero />
             <Marquee />
         </main>
     }

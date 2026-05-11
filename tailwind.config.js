@@ -61,21 +61,21 @@ module.exports = {
                     '0%': { backgroundPosition: '0% 50%' },
                     '100%': { backgroundPosition: '300% 50%' },
                 },
-                glitch1: {
+                'glitch1': {
                     '0%': { 'clip-path': 'inset(20px 0 85% 0)' },
                     '25%': { 'clip-path': 'inset(60px 0 30% 0)' },
                     '50%': { 'clip-path': 'inset(30px 0 15% 0)' },
                     '75%': { 'clip-path': 'inset(80px 0 90% 0)' },
                     '100%': { 'clip-path': 'inset(40px 0 50% 0)' },
                 },
-                glitch2: {
+                'glitch2': {
                     '0%': { 'clip-path': 'inset(15px 0 15% 0)' },
                     '25%': { 'clip-path': 'inset(80px 0 80% 0)' },
                     '50%': { 'clip-path': 'inset(50px 0 40% 0)' },
                     '75%': { 'clip-path': 'inset(10px 0 10% 0)' },
                     '100%': { 'clip-path': 'inset(70px 0 70% 0)' },
                 },
-                blink: {
+                'blink': {
                     '50%': { opacity: '0.3' },
                 },
                 'scroll-pulse': {
