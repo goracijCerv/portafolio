@@ -19,7 +19,7 @@ pub fn Hero() -> impl IntoView {
     ]);
 
     view! {
-        <header id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-void">
+        <header id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
 
             <canvas
                 node_ref=canvas_ref
@@ -30,7 +30,7 @@ pub fn Hero() -> impl IntoView {
 
             <div class="relative z-[2] max-w-[1200px] mx-auto px-8 w-full">
 
-                 <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full border font-mono text-[10px] tracking-[3px] text-aurora-purple-light mb-6"
+                 <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full border font-mono text-[10px] tracking-[3px] text-aurora-purple-light mb-6 mt-2"
                             style="background-color: color-mix(in srgb, var(--aurora-purple) 10%, transparent); border-color: color-mix(in srgb, var(--aurora-purple) 30%, transparent);">
                         <span class="w-1.5 h-1.5 rounded-full bg-aurora-green-light shadow-[0_0_8px_var(--aurora-green)] animate-blink"></span>
                         <span>"PORTAFOLIO ONLINE // PORTAFOLIO V1.0"</span>
@@ -65,7 +65,7 @@ pub fn Hero() -> impl IntoView {
 
                 //BENTOS GRID
 
-                <div class="reveal grid grid-cols-4 gap-4 mt-12 max-md:grid-cols-2">
+                <div class="reveal grid grid-cols-4 gap-4 mt-12 max-md:grid-cols-2 mb-2">
                     <BentoCard value="10+" label="Proyectos" color="purple" />
                     <BentoCard value="2" label="Años Exp." color="blue" />
                     <BentoCard value="8" label="Lenguajes" color="green" />
@@ -74,7 +74,7 @@ pub fn Hero() -> impl IntoView {
                         <span class="w-2 h-2 rounded-full bg-aurora-green-light shadow-[0_0_10px_var(--aurora-green)] animate-blink"></span>
                         <div>
                             <div class="font-mono text-aurora-green-light text-[0.9rem] font-bold">"DISPONIBLE"</div>
-                            <div class="font-mono text-[8px] tracking-[2px] text-gray-mid uppercase mt-1">"Open to work"</div>
+                            <div class="font-mono text-[8px] tracking-[2px] text-gray uppercase mt-1">"Open to work"</div>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ fn BentoCard( #[prop(into)] value: String, #[prop(into)] label: String, #[prop(i
     view! {
         <div class="glass rounded-2xl p-5 flex flex-col justify-center hover:border-aurora-purple-light/50 hover:-translate-y-1 transition-all duration-300 shadow-sm">
             <div class={format!("font-sans text-3xl md:text-4xl font-extrabold {}", color_class)}>{value}</div>
-            <div class="font-mono text-[8px] md:text-[9px] tracking-[2px] text-gray-mid uppercase mt-1">{label}</div>
+            <div class="font-mono text-[8px] md:text-[9px] tracking-[2px] text-gray uppercase mt-1">{label}</div>
         </div>
     }
 }
