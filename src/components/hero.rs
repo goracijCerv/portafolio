@@ -24,7 +24,7 @@ pub fn Hero() -> impl IntoView {
             <canvas
                 node_ref=canvas_ref
                 id="particles-canvas"
-                class="absolute inset-0 w-full h-full pointer-events-none z-[1]"
+                class="absolute inset-0 w-full h-full pointer-events-none z-[0]"
                 aria-hidden=true>
             </canvas>
 
