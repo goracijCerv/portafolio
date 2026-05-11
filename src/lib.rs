@@ -9,6 +9,7 @@ pub mod utils;
     navigation::Navigation,
     hero::Hero,
     terminal::Terminal,
+    skills::Skils,
  };
 
 #[component]
@@ -21,6 +22,7 @@ pub fn App() -> impl IntoView {
             <Hero />
             <Marquee />
             <Terminal/>
+            <Skils/>
         </main>
     }
 }
