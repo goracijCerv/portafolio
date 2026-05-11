@@ -5,4 +5,4 @@ pub mod loading;
 pub mod navigation;
 // pub mod projects;
 // pub mod skills;
-// pub mod terminal;
+pub mod terminal;

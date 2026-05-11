@@ -8,6 +8,7 @@ pub mod utils;
     loading::Loading,
     navigation::Navigation,
     hero::Hero,
+    terminal::Terminal,
  };
 
 #[component]
@@ -19,6 +20,7 @@ pub fn App() -> impl IntoView {
         <main>
             <Hero />
             <Marquee />
+            <Terminal/>
         </main>
     }
 }
