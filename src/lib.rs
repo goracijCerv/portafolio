@@ -10,7 +10,8 @@ pub mod utils;
     hero::Hero,
     terminal::Terminal,
     skills::Skils,
-    projects::Projects
+    projects::Projects,
+    contact::Contact,
  };
 
 #[component]
@@ -25,6 +26,7 @@ pub fn App() -> impl IntoView {
             <Terminal/>
             <Skils/>
             <Projects />
+            <Contact />
         </main>
     }
 }

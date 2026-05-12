@@ -1,4 +1,4 @@
-// pub mod contact;
+pub mod contact;
 // pub mod footer;
 pub mod hero;
 pub mod loading;
