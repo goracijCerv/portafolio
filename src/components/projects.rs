@@ -70,7 +70,7 @@ pub fn Projects() -> impl  IntoView {
                 
                 <div class="reveal mb-16">
                     <h2 class="font-figtree text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tracking tracking-tight text-text-heading">
-                        "03. ALGUNOS " <span class="aurora-text">"PROJECTOS"</span> 
+                        "03. ALGUNOS " <span class="aurora-text">"PROYECTOS"</span> 
                     </h2>
                 </div>
                 //Grid de proyectos
@@ -92,9 +92,8 @@ pub fn Projects() -> impl  IntoView {
 fn ProjectCard(#[prop(into)] project: Project, #[prop(into)] index: usize) -> impl IntoView {
     let card_ref = NodeRef::<leptos::html::Article>::new();
 
-    let (rot_x, set_rot_x) = signal(0.0);
-    let (rot_y, set_rot_y) = signal(0.0);
-    let (is_hovered, set_is_hovered) = signal(false);
+    let (transform, set_transform) = signal("perspective(1000px) rotateX(0deg) translateY(0px)".to_string());
+    let (transition, set_transition) = signal("transform 0.5s ease-out".to_string());
 
     let (dot_color,text_glow,tag_class) = match project.theme {
         "purple" => ("bg-aurora-purple shadow-[0_0_8px_var(--aurora-purple)]", "group-hover:text-aurora-purple-light", "bg-aurora-purple/10 border-aurora-purple/30 text-aurora-purple"),
@@ -114,32 +113,24 @@ fn ProjectCard(#[prop(into)] project: Project, #[prop(into)] index: usize) -> im
             let rx = (rect.height() / 2.0 -y) /15.0;
             let ry = (x - rect.width() /2.0) /15.0;
 
-            set_rot_x.set(rx);
-            set_rot_y.set(ry);
-            set_is_hovered.set(true);
+            set_transform.set(format!("perspective(1000px) rotateX({:.2}deg) rotateY({:.2}deg) translateY(-8px)", rx, ry));
+            set_transition.set("transform 0.1s ease-out".to_string());
 
         }
     };
 
     let on_mouse_leave = move |_| {
-        set_rot_x.set(0.0);
-        set_rot_y.set(0.0);
-        set_is_hovered.set(false);
-    };
-
-    let transform_style = move || {
-        if is_hovered.get() {
-            format!("transform: perspective(1000px) rotateX({}deg) rotateY({}deg) translateY(-8px); transition: transform 0.1s ease-out;", rot_x.get(), rot_y.get())
-        }else {
-            "transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px); transition: transform 0.5s ease-out;".to_string()
-        }
+        set_transform.set("perspective(1000px) rotateX(0deg) translateY(0px)".to_string());
+        set_transition.set("transform 0.5s ease-out".to_string());
     };
 
     view!{
         <article
             node_ref = card_ref
             class="project-card reveal group cursor-ponter"
-            style= move || format!("animation-delay: {}ms, {}", index *100, transform_style())
+            style:animation-delay=format!("{}ms",index*100)
+            style:transform=move || transform.get()
+            style:transition=move || transition.get()
             on:mousemove=on_mouse_move
             on:mouseleave=on_mouse_leave
         >
@@ -149,7 +140,7 @@ fn ProjectCard(#[prop(into)] project: Project, #[prop(into)] index: usize) -> im
                     <span class="font-mono text-[10px] tracking-widset text-gray">{project.id}</span>
                     <div class="flex gap-1">
                         <div class={format!("w-1.5 h-1.5 rounded-full animate-blink {}",dot_color)}></div>
-                        <div class={format!("w-1.5 h-1.5 rounded-full animate-blink opacity-50 {}",dot_color)}></div>
+                        <div class={format!("w-1.5 h-1.5 rounded-full animate-blink opacity-50 {}",dot_color)} style="animation-delay: 0.3s"></div>
                     </div>
                 </div>
 
@@ -171,7 +162,7 @@ fn ProjectCard(#[prop(into)] project: Project, #[prop(into)] index: usize) -> im
                 </div>
 
                 //links inferiores
-                <div class="flex gap-4 pt-4 border-t border-gray-deep mt-auto">
+                <div class="flex gap-4 pt-4 border-t border-gray-deep mt-auto pointer-events-auto">
                     <Show when=move || !project.github.is_empty() fallback=|| ()>
                           <a href={project.github} target="_blank" rel="noopener noreferrer"
                             class="font-mono text-[10px] tracking-widset text-gray-mid hover:text-text-main transition-colors flex items-center gap-1"
