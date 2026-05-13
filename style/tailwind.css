@@ -29,30 +29,30 @@
     }
 
     /* 2. DICCIONARIO DE COLORES (MODO OSCURO) */
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --void: #08080a;
-            --void-light: #12121a;
-            --gray-deep: #1a1a2e;
-            --gray-mid: #2d2d44;
-            --gray-light: #4a4a6a;
 
-            --text-main: #d8d8e8;
-            --text-heading: #ffffff;
+    .dark {
+        --void: #08080a;
+        --void-light: #12121a;
+        --gray-deep: #1a1a2e;
+        --gray-mid: #2d2d44;
+        --gray-light: #4a4a6a;
 
-            --aurora-purple: #7b2cbf;
-            --aurora-purple-light: #9d4edd;
-            --aurora-purple-glow: #c77dff;
+        --text-main: #d8d8e8;
+        --text-heading: #ffffff;
 
-            --aurora-blue: #3a86ff;
-            --aurora-blue-light: #4cc9f0;
-            --aurora-blue-glow: #90e0ef;
+        --aurora-purple: #7b2cbf;
+        --aurora-purple-light: #9d4edd;
+        --aurora-purple-glow: #c77dff;
 
-            --aurora-green: #2ec4b6;
-            --aurora-green-light: #3bf4fb;
-            --aurora-green-glow: #72efdd;
-        }
+        --aurora-blue: #3a86ff;
+        --aurora-blue-light: #4cc9f0;
+        --aurora-blue-glow: #90e0ef;
+
+        --aurora-green: #2ec4b6;
+        --aurora-green-light: #3bf4fb;
+        --aurora-green-glow: #72efdd;
     }
+
 
     /* 3. APLICACIÓN GLOBAL */
     body {
