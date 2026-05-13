@@ -1,5 +1,6 @@
 use leptos::prelude::*;
-
+use crate::utils::scroll::use_scroll_progress;
+use crate::utils::icon_changer::favicon_dinamico;
 
 pub mod components;
 pub mod utils;
@@ -12,6 +13,7 @@ pub mod utils;
     skills::Skils,
     projects::Projects,
     contact::Contact,
+    footer::Footer,
  };
 
 #[component]
@@ -28,12 +30,26 @@ pub fn App() -> impl IntoView {
             <Projects />
             <Contact />
         </main>
+        <Footer/>
     }
 }
 
 #[component] 
 fn BackGround() -> impl IntoView {
+    let progress = use_scroll_progress();
+    favicon_dinamico();
     view! {
+        <div class="fixed top-0 left-0 w-full h-[3px] z-[10000] pointer-events-none">
+            
+            <div 
+                class="h-full bg-gradient-to-r from-aurora-purple via-aurora-blue to-aurora-green shadow-[0_0_12px_rgba(58,134,255,0.8)]"
+                
+                style:width=move || format!("{}%", progress.get())
+                style:transition="width 0.1s ease-out"
+            ></div>
+            
+        </div>
+
         <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
             <div class="aurora-ribbon aurora-ribbon-1"></div>
             <div class="aurora-ribbon aurora-ribbon-2"></div>

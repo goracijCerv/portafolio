@@ -41,12 +41,19 @@ fn calculate_scroll_percentage(window: &web_sys::Window) -> Option<f64> {
     let document = window.document()?;
     let html = document.document_element()?;
 
-    let scroll_top = html.scroll_top() as f64;
+    let scroll_y = window.scroll_y().unwrap_or(0.0);
     let scroll_height = html.scroll_height() as f64;
     let client_height = html.client_height() as f64;
     
     let max_scroll = (scroll_height - client_height).max(1.0);
-    Some((scroll_top / max_scroll * 100.0).clamp(0.0, 100.0))
+    let mut pct = (scroll_y / max_scroll) * 100.0;
+
+    // "Efecto Imán": Si estamos a menos de 1% del final, forzamos el 100%
+    if pct > 99.0 {
+        pct = 100.0;
+    }
+
+    Some(pct.clamp(0.0, 100.0))
 }
 
 
