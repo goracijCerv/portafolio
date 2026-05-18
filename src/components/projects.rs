@@ -13,50 +13,50 @@ struct Project {
 
 const PROJECTS: [Project; 6] = [
     Project {
-        id: "PRJ-001", title: "NEURAL INTERFACE",
-        desc: "Panel de analíticas impulsado por IA con procesamiento de datos en tiempo real mediante WebAssembly.",
-        tags: &["Leptos", "Rust", "WebGL", "TensorFlow"],
-        github: "https://github.com/yourusername/neural-interface",
-        demo: "https://neural-interface.vercel.app",
+        id: "PRJ-001", title: "Videojuego VR",
+        desc: "Videojuego en realidad virtual con fines terapeuticos para niños con autismo.",
+        tags: &["#C", "Unity", "VR"],
+        github: "https://github.com/goracijCerv/AppTesinaVr",
+        demo: "https://youtu.be/DjuSDeGa7Qk",
         theme: "purple",
     },
     Project {
-        id: "PRJ-002", title: "PRISM VAULT",
-        desc: "Protocolo de almacenamiento encriptado con resistencia cuántica y pruebas de conocimiento cero.",
-        tags: &["Rust", "Solidity", "IPFS", "Go"],
-        github: "https://github.com/yourusername/prism-vault",
-        demo: "https://prism-vault.vercel.app",
+        id: "PRJ-002", title: "CLOAK",
+        desc: "CLI que ayuda a hacer backups de repositorios de git.",
+        tags: &["GIT", "GO"],
+        github: "https://github.com/goracijCerv/cloak",
+        demo: "",
         theme: "blue",
     },
     Project {
-        id: "PRJ-003", title: "EMERALD WAVE",
-        desc: "Sintetizador modular en el navegador construido con Web Audio API y análisis visual de ondas.",
-        tags: &["TypeScript", "Wasm", "Web Audio", "Canvas"],
-        github: "https://github.com/yourusername/emerald-wave",
-        demo: "https://emerald-wave.vercel.app",
+        id: "PRJ-003", title: "Api en GO",
+        desc: "Una api hecha con la libreria standar de go.",
+        tags: &["SQLite", "SQL", "GO"],
+        github: "https://github.com/goracijCerv/students-api",
+        demo: "",
         theme: "green",
     },
     Project {
-        id: "PRJ-004", title: "AURORA OS",
-        desc: "Sistema operativo web experimental impulsado por Leptos con sistema de archivos virtual.",
+        id: "PRJ-004", title: "PORTAFOLIO",
+        desc: "Sistema operativo web experimental impulsado por Leptos.",
         tags: &["Leptos", "Rust", "WebGL", "WASM"],
         github: "https://github.com/yourusername/aurora-os",
         demo: "https://aurora-os.vercel.app",
         theme: "purple",
     },
     Project {
-        id: "PRJ-005", title: "GHOST PROTOCOL",
-        desc: "Mensajería encriptada de extremo a extremo con salas que se autodestruyen y red de retransmisión.",
-        tags: &["Node.js", "Signal", "WebRTC", "Docker"],
-        github: "https://github.com/yourusername/ghost-protocol",
-        demo: "https://ghost-protocol.vercel.app",
+        id: "PRJ-005", title: "Backed Sistema con Autorización",
+        desc: "Backed de una api donde se tiene permisos de roles y se deben de authentificar para poder realizar dichas operaciones.",
+        tags: &["#C", "API", "ASPNET.Identity", "EntityFrameWork"],
+        github: "https://github.com/goracijCerv/AuthECAPI",
+        demo: "",
         theme: "blue",
     },
     Project {
-        id: "PRJ-006", title: "NEXUS GRID",
-        desc: "Editor de código colaborativo en tiempo real con sincronización CRDT y vista previa en vivo.",
-        tags: &["Yjs", "WebRTC", "Vue", "GraphQL"],
-        github: "https://github.com/yourusername/nexus-grid",
+        id: "PRJ-006", title: "Fronted Sistema con Autorización",
+        desc: "El fronted que consume la api con autorización.",
+        tags: &["Angular"],
+        github: "https://github.com/goracijCerv/AuthCClient",
         demo: "",
         theme: "green",
     },
@@ -165,7 +165,7 @@ fn ProjectCard(#[prop(into)] project: Project, #[prop(into)] index: usize) -> im
                 <div class="flex gap-4 pt-4 border-t border-gray-deep mt-auto pointer-events-auto">
                     <Show when=move || !project.github.is_empty() fallback=|| ()>
                           <a href={project.github} target="_blank" rel="noopener noreferrer"
-                            class="font-mono text-[10px] tracking-widset text-gray-mid hover:text-text-main transition-colors flex items-center gap-1"
+                            class="font-mono text-[10px] tracking-widset text-gray hover:aurora-text transition-colors flex items-center gap-1"
                           > 
                             <span class="text-aurora-blue-light">"["</span>"CODIGO" <span class="text-aurora-blue-light">"]"</span>
                          </a>
@@ -173,7 +173,7 @@ fn ProjectCard(#[prop(into)] project: Project, #[prop(into)] index: usize) -> im
 
                     <Show when=move || !project.demo.is_empty() fallback=|| ()>
                         <a href={project.demo} target="_blank" rel="noopener noreferrer"
-                        class="font-mono text-[10px] tracking-widest text-gray-mid hover:text-text-main transition-colors flex items-center gap-1">
+                        class="font-mono text-[10px] tracking-widest text-gray hover:aurora-text transition-colors flex items-center gap-1">
                             <span class="text-aurora-green-light">"["</span> "DEMO" <span class="text-aurora-green-light">"]"</span>
                         </a>
                     </Show>

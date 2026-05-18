@@ -19,7 +19,7 @@ pub fn Footer() -> impl IntoView {
 
                 <div class="flex gap-4">
                     //Github 
-                    <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" 
+                    <a href="https://github.com/goracijCerv" target="_blank" rel="noopener noreferrer" 
                        class="w-10 h-10 rounded-full border border-gray-deep flex items-center justify-center text-gray-mid hover:text-aurora-purple-light hover:border-aurora-purple-light hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(123,44,191,0.2)] transition-all duration-300"
                        aria-label="GitHub">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -27,7 +27,7 @@ pub fn Footer() -> impl IntoView {
                         </svg>
                     </a>
 
-                    <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer"
+                    <a href="https://linkedin.com/in/horacio-cervantes-p-9663a8251" target="_blank" rel="noopener noreferrer"
                        class="w-10 h-10 rounded-full border border-gray-deep flex items-center justify-center text-gray-mid hover:text-aurora-blue-light hover:border-aurora-blue-light hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(58,134,255,0.2)] transition-all duration-300"
                        aria-label="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -37,7 +37,7 @@ pub fn Footer() -> impl IntoView {
                         </svg>
                     </a>
 
-                    <a href="x.com" target="_blank" rel="noopener noreferrer"
+                    <a href="https://x.com/CasualSoul01" target="_blank" rel="noopener noreferrer"
                     class="w-10 h-10 rounded-full border border-gray-deep flex items-center justify-center text-gray-mid hover:text-text-heading hover:border-text-heading hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(15,23,42,0.15)] dark:hover:shadow-[0_4px_15px_rgba(255,255,255,0.15)] transition-all duration-300"
                     aria-label="X">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 24 24">
