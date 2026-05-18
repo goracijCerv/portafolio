@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link  data-trunk rel="copy-file" href="public/og-image.png" dst="og-image.png" />
     <title>Horacio | Portafolio</title>
     <meta name="description" content="Portafolio de Ingeniero en ciencias computacionales."/>
     <meta name="author" content="Horacio Dev"/>
@@ -30,6 +31,7 @@
 
     <link data-trunk rel="icon" href="public/favicon.ico"   type="image/x-icon" data-no-hash/>
     <link data-trunk rel="copy-file" href="public/favicon-inactive.ico"type="image/x-icon" data-no-hash/>
+    <link data-trunk rel="copy-file" href="public/cv-horacio.pdf" />
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -50,6 +52,20 @@
     </script>
     <link data-trunk rel="tailwind-css" href="style/tailwind.css" />
     <link data-trunk rel="rust" data-bin="my-portfolio" data-wasm-opt="z" />
+    <script>
+        // Este script es el "Guardián". Se ejecuta antes que Rust.
+        (function() {
+            const temaGuardado = localStorage.getItem('color-scheme');
+            const prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            // Si el usuario eligió oscuro O si no eligió nada pero su sistema es oscuro
+            if (temaGuardado === 'dark' || (!temaGuardado && prefiereOscuro)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
 </head>
 <body>
     <div id="app"></div>

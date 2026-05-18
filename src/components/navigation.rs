@@ -2,7 +2,7 @@ use leptos::prelude::*;
 use leptos::task::spawn_local;
 use wasm_bindgen::JsCast;
 use web_sys::window;
-use leptos_use::{use_color_mode, ColorMode, UseColorModeReturn};
+use leptos_use::{ColorMode, UseColorModeOptions, UseColorModeReturn, use_color_mode, use_color_mode_with_options};
 
 #[component]
 pub fn Navigation() -> impl IntoView {
@@ -134,7 +134,12 @@ pub fn Navigation() -> impl IntoView {
 
 #[component]
 pub fn ThemeToggle() -> impl IntoView {
-    let UseColorModeReturn { mode, set_mode, .. } = use_color_mode();
+    
+    let opciones = UseColorModeOptions::default()
+        .attribute("class") // Inyecta la clase en el <html>
+        .storage_key("color-scheme"); // Coincide con nuestro script de arriba
+
+    let UseColorModeReturn { mode, set_mode, .. } = use_color_mode_with_options(opciones);
 
     let alternar_tema = move |_| {
         if mode.get() == ColorMode::Dark {
