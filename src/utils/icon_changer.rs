@@ -15,13 +15,13 @@ pub fn favicon_dinamico() {
     Effect::new(move |_| {
         if visibility.get() == web_sys::VisibilityState::Visible {
             // El usuario regresó o está viendo la página
-            set_icon.set(Some("public/favicon.ico".into()));
+            set_icon.set(Some("favicon.ico".into()));
             
             // Opcional: También puedes cambiar el título aquí si quieres
             document().set_title("Horacio | Portafolio"); 
         } else {
             // El usuario se fue a otra pestaña o minimizó
-            set_icon.set(Some("public/favicon-inactive.ico".into()));
+            set_icon.set(Some("favicon-inactive.ico".into()));
             
             // Opcional:
             document().set_title("¡Vuelve pronto!"); 
