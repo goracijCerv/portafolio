@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link data-trunk rel="copy-dir" href="public/" />
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Horacio | Portafolio</title>
@@ -11,17 +10,17 @@
     <meta name="robots" content="index, follow"/>
     <meta name="theme-color" content="#7b2cbf"/>
     
-    <meta property="og:type" content="wbesite" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="Horacio | Portafolio"/>
-    <meta property="og:description" content="Mi portafolio, donde hay varios projectos realizados atraves del tiempo" />
-    <meta property="og:image" content="/og-image.png"/>
+    <meta property="og:description" content="Mi portafolio, donde hay varios proyectos realizados a través del tiempo" />
+    <meta property="og:image" content="https://goracijcerv.github.io/portafolio/og-image.png"/>
     <meta property="og:site_name" content="Horacio Dev" />
     <meta property="og:locale" content="es_MX" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Horacio | Portafolio" />
     <meta name="twitter:description" content="Portafolio web" />
-    <meta name="twitter:image" content="/og-image.png"/>
+    <meta name="twitter:image" content="https://goracijcerv.github.io/portafolio/og-image.png"/>
     <meta name="twitter:creator" content="@CasualSoul01" />
     <meta name="twitter:site" content="@CasualSoul01" />
 
@@ -29,9 +28,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <link data-trunk rel="icon" href="public/favicon.ico"   type="image/x-icon" data-no-hash/>
-    <link data-trunk rel="icon" href="public/favicon-inactive.ico"type="image/x-icon" data-no-hash/>
+    <link data-trunk rel="icon" href="public/favicon.ico" type="image/x-icon" />
+    
+    <link data-trunk rel="copy-file" href="public/favicon-inactive.ico" />
     <link data-trunk rel="copy-file" href="public/cv-horacio.pdf" />
+    <link data-trunk rel="copy-file" href="public/og-image.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -42,23 +44,22 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Horacio Dev",
-        "url": "",
-        "jobTitle": "Desarollador Fulstack Jr",
+        "url": "https://goracijcerv.github.io/portafolio/",
+        "jobTitle": "Desarrollador Fullstack Jr",
         "sameAs": [
             "https://github.com/goracijCerv",
             "https://x.com/CasualSoul01"
         ]
     }
     </script>
+
     <link data-trunk rel="tailwind-css" href="style/tailwind.css" />
     <link data-trunk rel="rust" data-bin="my-portfolio" data-wasm-opt="z" />
+    
     <script>
-        // Este script es el "Guardián". Se ejecuta antes que Rust.
         (function() {
             const temaGuardado = localStorage.getItem('color-scheme');
             const prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-            // Si el usuario eligió oscuro O si no eligió nada pero su sistema es oscuro
             if (temaGuardado === 'dark' || (!temaGuardado && prefiereOscuro)) {
                 document.documentElement.classList.add('dark');
             } else {
