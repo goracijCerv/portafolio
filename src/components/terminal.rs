@@ -95,29 +95,35 @@ pub fn Terminal() -> impl IntoView {
 
                     // TIMELINE
                     
-                    <div class="reveal-right w-full lg:pl-10">
+                    <div class="reveal-right w-full lg:pl-10 flex flex-col h-full justify-between">
                         <div class="relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-aurora-purple before:via-aurora-blue before:to-aurora-green">
                             <TimeLineItem 
                                 year="2023 — PRESENTE"
-                                role="Senior Full-Stack Developer"
-                                company="TechCorp Inc."
-                                desc="Liderando arquitectura frontend con Rust/WASM, mentoreando equipos en estándares web modernos."
-                                color="purple"
-                            />
-                            <TimeLineItem 
-                                year="2021 — 2023"
-                                role="Full-Stack Developer"
-                                company="Agencia Digital"
-                                desc="Ecosistemas React & Node.js, entrega de más de 20 productos para clientes empresariales."
+                                role="Jr Full-Stack Developer"
+                                company="IT-Seekers."
+                                desc="Experiencia en desarollo de apis en Express, en .Net y en el forntend se uso Angular y React"
                                 color="blue"
                             />
                             <TimeLineItem 
-                                year="2019 — 2021"
-                                role="Junior Developer"
-                                company="StartupXYZ"
-                                desc="El inicio del viaje. Web responsiva, APIs REST, aprendiendo las mejores prácticas."
+                                year="2022 — 2023"
+                                role="Practicante"
+                                company="Sharevolts"
+                                desc="Desarrollo en power automate con aplicaciones de prueba y gestión de entornos empresariales con Microsoft 365.."
                                 color="green"
                             />
+                            
+                        </div>
+
+                        <div class="mt-8 pt-6 flex sm:justify-start justify-center">
+                            <a 
+                                href="/cv-horacio.pdf" 
+                                class="crystal-btn-primary flex items-center justify-center gap-3 no-underline w-full sm:w-auto"
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                <span class="font-bold tracking-wider font-mono text-xs">"DESCARGAR CURRÍCULUM"</span>
+                            </a>
                         </div>
                     </div>
                 </div>
