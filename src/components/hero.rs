@@ -58,7 +58,7 @@ pub fn Hero() -> impl IntoView {
                 //Botones
                 <div class="reveal flex gap-4 flex-wrap mt-10 items-center">
                     <a 
-                        href="/cv-horacio.pdf" 
+                        href="public/cv-horacio.pdf" 
                         class="crystal-btn-primary flex items-center justify-center gap-2 no-underline"
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
