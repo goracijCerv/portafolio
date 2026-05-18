@@ -31,8 +31,9 @@ jobs:
 
       - name: Instalar Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: wasm32-unknown-unknown
+
+      - name: Añadir WebAssembly target
+        run: rustup target add wasm32-unknown-unknown
 
       - name: Instalar Trunk (Empaquetador de Leptos)
         uses: jetli/trunk-action@v0.5.0
