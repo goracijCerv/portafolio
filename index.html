@@ -10,29 +10,27 @@
     <meta name="robots" content="index, follow"/>
     <meta name="theme-color" content="#7b2cbf"/>
     
+    <link data-trunk rel="copy-dir" href="public/" />
+
+    <link rel="icon" href="public/favicon.ico" type="image/x-icon" />
+
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Horacio | Portafolio"/>
     <meta property="og:description" content="Mi portafolio, donde hay varios proyectos realizados a través del tiempo" />
-    <meta property="og:image" content="https://goracijcerv.github.io/portafolio/og-image.png"/>
+    <meta property="og:image" content="https://goracijcerv.github.io/portafolio/public/og-image.png"/>
     <meta property="og:site_name" content="Horacio Dev" />
     <meta property="og:locale" content="es_MX" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Horacio | Portafolio" />
     <meta name="twitter:description" content="Portafolio web" />
-    <meta name="twitter:image" content="https://goracijcerv.github.io/portafolio/og-image.png"/>
+    <meta name="twitter:image" content="https://goracijcerv.github.io/portafolio/public/og-image.png"/>
     <meta name="twitter:creator" content="@CasualSoul01" />
     <meta name="twitter:site" content="@CasualSoul01" />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
     <meta name="mobile-web-app-capable" content="yes" />
-
-    <link data-trunk rel="icon" href="public/favicon.ico" type="image/x-icon" />
-    
-    <link data-trunk rel="copy-file" href="public/favicon-inactive.ico" />
-    <link data-trunk rel="copy-file" href="public/cv-horacio.pdf" />
-    <link data-trunk rel="copy-file" href="public/og-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,6 +58,7 @@
         (function() {
             const temaGuardado = localStorage.getItem('color-scheme');
             const prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
             if (temaGuardado === 'dark' || (!temaGuardado && prefiereOscuro)) {
                 document.documentElement.classList.add('dark');
             } else {

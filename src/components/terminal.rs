@@ -116,7 +116,8 @@ pub fn Terminal() -> impl IntoView {
 
                         <div class="mt-8 pt-6 flex sm:justify-start justify-center">
                             <a 
-                                href="cv-horacio.pdf" 
+                                target="_blank"
+                                href="public/cv-horacio.pdf" 
                                 class="crystal-btn-primary flex items-center justify-center gap-3 no-underline w-full sm:w-auto"
                             >
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
