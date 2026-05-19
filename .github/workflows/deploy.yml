@@ -49,7 +49,7 @@ jobs:
       - name: Subir la carpeta dist
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './target/site'
+          path: './dist'
 
       - name: Desplegar a GitHub Pages
         id: deployment
