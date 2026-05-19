@@ -41,7 +41,7 @@ const PROJECTS: [Project; 6] = [
         desc: "Sistema operativo web experimental impulsado por Leptos.",
         tags: &["Leptos", "Rust", "WebGL", "WASM"],
         github: "https://github.com/yourusername/aurora-os",
-        demo: "https://aurora-os.vercel.app",
+        demo: "https://goracijcerv.github.io/portafolio/",
         theme: "purple",
     },
     Project {
