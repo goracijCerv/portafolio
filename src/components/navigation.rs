@@ -2,7 +2,7 @@ use leptos::prelude::*;
 use leptos::task::spawn_local;
 use wasm_bindgen::JsCast;
 use web_sys::window;
-use leptos_use::{ColorMode, UseColorModeOptions, UseColorModeReturn, use_color_mode, use_color_mode_with_options};
+use leptos_use::{ColorMode, UseColorModeOptions, UseColorModeReturn use_color_mode_with_options};
 
 #[component]
 pub fn Navigation() -> impl IntoView {
@@ -15,10 +15,10 @@ pub fn Navigation() -> impl IntoView {
     ];
 
     let (active_section, set_active_section) = signal("inicio".to_string());
-    
+
     // 1. NUEVA SEÑAL: Controla si el menú móvil está abierto o cerrado
     let (is_menu_open, set_is_menu_open) = signal(false);
-    
+
     spawn_local(async move {
         let win = window().expect("Solo funciona en navegador");
 
@@ -46,9 +46,9 @@ pub fn Navigation() -> impl IntoView {
             <div class="mb-4">
                 <ThemeToggle />
             </div>
-            {   
+            {
                 secciones.into_iter().map(|s| {
-                    
+
                     view!{
                         <div class="group relative flex items-center justify-end">
                             <span class="absolute right-10 px-3 py-1 rounded bg-void-light border border-aurora-purple/20
@@ -57,7 +57,7 @@ pub fn Navigation() -> impl IntoView {
                                         translate-x-2 group-hover:translate-x-0 shadow-xl whitespace-nowrap uppercase">
                                 {s}
                             </span>
-                            <a  
+                            <a
                                 class="nav-dot"
                                 href=format!("#{}",s)
                                 class:active=move || active_section.get() == s
@@ -74,7 +74,7 @@ pub fn Navigation() -> impl IntoView {
 
         // --- BOTÓN HAMBURGUESA MÓVIL ---
         // Se queda fijo arriba a la derecha. Tiene z-[110] para estar siempre por encima de todo.
-        <button 
+        <button
             class="md:hidden fixed top-6 right-6 z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-void-light/80 backdrop-blur-md border border-gray-deep text-text-main shadow-lg transition-transform hover:scale-105"
             on:click=move |_| set_is_menu_open.update(|open| *open = !*open) // Alterna entre true/false
             aria-label="Menú de navegación"
@@ -98,20 +98,20 @@ pub fn Navigation() -> impl IntoView {
 
         // --- PANTALLA COMPLETA DEL MENÚ MÓVIL (Overlay) ---
         // Usamos una clase dinámica para cambiar la opacidad y los eventos dependiendo de `is_menu_open`
-        <div 
-            class=move || format!("md:hidden fixed inset-0 z-[105] bg-void/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 ease-in-out {}", 
+        <div
+            class=move || format!("md:hidden fixed inset-0 z-[105] bg-void/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 ease-in-out {}",
                 if is_menu_open.get() { "opacity-100 pointer-events-auto" } else { "opacity-0 pointer-events-none" }
             )
         >
             // Colocamos el interruptor de tema hasta arriba del menú móvil
             <ThemeToggle />
-            
+
             <div class="flex flex-col items-center gap-8">
-                {   
+                {
                     secciones.into_iter().map(|s| {
-                        
+
                         view!{
-                            <a  
+                            <a
                                 href=format!("#{}", s)
                                 class="text-2xl font-mono tracking-[0.2em] uppercase transition-all duration-300"
                                 class=("text-aurora-purple-light scale-110", move || active_section.get() == s)
@@ -134,7 +134,7 @@ pub fn Navigation() -> impl IntoView {
 
 #[component]
 pub fn ThemeToggle() -> impl IntoView {
-    
+
     let opciones = UseColorModeOptions::default()
         .attribute("class") // Inyecta la clase en el <html>
         .storage_key("color-scheme"); // Coincide con nuestro script de arriba
@@ -152,18 +152,18 @@ pub fn ThemeToggle() -> impl IntoView {
     view! {
         // CORRECCIÓN: Convertimos el botón en un círculo perfecto (w-8 h-8)
         // en lugar de usar padding rectangular (px-4 py-2) para que quepa perfecto en ambas barras.
-        <button 
+        <button
             on:click=alternar_tema
             class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-deep bg-void-light text-text-main transition-transform duration-300 hover:scale-110 shadow-lg"
             aria-label="Alternar tema de color"
         >
             {move || if mode.get() == ColorMode::Dark {
-                view! { 
-                    <span class="text-aurora-blue-light text-sm">"☀️"</span> 
+                view! {
+                    <span class="text-aurora-blue-light text-sm">"☀️"</span>
                 }.into_any()
             } else {
-                view! { 
-                    <span class="text-aurora-purple-light text-sm">"🌙"</span> 
+                view! {
+                    <span class="text-aurora-purple-light text-sm">"🌙"</span>
                 }.into_any()
             }}
         </button>

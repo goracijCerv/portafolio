@@ -1,8 +1,8 @@
-use leptos::prelude::*;
-use gloo_timers::future::sleep;
-use std::time::Duration;
 use crate::utils::scroll::use_reveal_observer;
+use gloo_timers::future::sleep;
+use leptos::prelude::*;
 use serde::Serialize;
+use std::time::Duration;
 
 #[derive(Serialize)]
 struct FormularioGenerico {
@@ -10,7 +10,7 @@ struct FormularioGenerico {
     nombre_usuario: String,
     correo_usuario: String,
     asunto: String,
-    commentario: String,
+    comentario: String,
 }
 
 #[component]
@@ -21,59 +21,66 @@ pub fn Contact() -> impl IntoView {
     let (email, set_email) = signal(String::new());
     let (subject, set_subject) = signal(String::new());
     let (message, set_message) = signal(String::new());
-    let (errors, set_errors)  = signal(Vec::<String>::new());
-    
+    let (errors, set_errors) = signal(Vec::<String>::new());
+
     // Estados del envío
     let (submitting, set_submitting) = signal(false);
     let (submited, set_submited) = signal(false);
     // NUEVO: Estado para manejar errores del servidor
     let (server_error, set_server_error) = signal(false);
 
-    let validate_email = |email: &str| -> bool {
-        email.contains('@') && email.contains('.') && email.len() > 5
-    };
+    let validate_email =
+        |email: &str| -> bool { email.contains('@') && email.contains('.') && email.len() > 5 };
 
     let on_submit = move |ev: leptos::ev::SubmitEvent| {
         ev.prevent_default();
         let mut errs = Vec::new();
 
-        if name.get().len() < 2 { errs.push("name".to_string()); }
-        if !validate_email(&email.get()) { errs.push("email".to_string()); }
-        if subject.get().len() < 3 { errs.push("subject".to_string()); }
-        if message.get().len() < 10 { errs.push("message".to_string()); }
+        if name.get().len() < 2 {
+            errs.push("name".to_string());
+        }
+        if !validate_email(&email.get()) {
+            errs.push("email".to_string());
+        }
+        if subject.get().len() < 3 {
+            errs.push("subject".to_string());
+        }
+        if message.get().len() < 10 {
+            errs.push("message".to_string());
+        }
 
         set_errors.set(errs.clone());
 
-        if !errs.is_empty() { return; }
+        if !errs.is_empty() {
+            return;
+        }
 
         set_submitting.set(true);
         // Limpiamos cualquier error previo al intentar enviar de nuevo
         set_server_error.set(false);
 
         let data = FormularioGenerico {
-            access_key: "c61fdc1a-8af0-4f05-9079-85e75de42e22".to_string(), 
+            access_key: "c61fdc1a-8af0-4f05-9079-85e75de42e22".to_string(),
             nombre_usuario: name.get().to_string(),
             correo_usuario: email.get().to_string(),
             asunto: subject.get().to_string(),
-            commentario: message.get().to_string(), 
+            comentario: message.get().to_string(),
         };
 
         leptos::task::spawn_local(async move {
             let resp = enviar_a_servidor(data).await;
 
-           
-            
             if resp.is_ok() && resp.unwrap() {
                 set_submited.set(true);
-                
+
                 sleep(Duration::from_millis(3000)).await;
-                
+
                 set_submited.set(false);
                 set_name.set(String::new());
                 set_email.set(String::new());
                 set_subject.set(String::new());
                 set_message.set(String::new());
-                 set_submitting.set(false);
+                set_submitting.set(false);
             } else {
                 // NUEVO: Si falla, activamos el error
                 set_submited.set(false);
@@ -83,7 +90,7 @@ pub fn Contact() -> impl IntoView {
         });
     };
 
-    let has_error = move |field:&str| errors.get().contains(&field.to_string());
+    let has_error = move |field: &str| errors.get().contains(&field.to_string());
 
     view! {
         <section id="contacto" class="py-32 relative z-[2]" aria-label="Sección de Contacto">
@@ -100,10 +107,10 @@ pub fn Contact() -> impl IntoView {
 
                 <form on:submit=on_submit class="glass rounded-2xl p-6 md:p-10 mt-12 text-left reveal shadow-xl" novalidate>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        
+
                         <div class="mb-2">
                             <label for="name-input" class="block font-mono text-[9px] tracking-[2px] uppercase mb-2 text-aurora-purple">"Nombre"</label>
-                            <input type="text" id="name-input" prop:value=name 
+                            <input type="text" id="name-input" prop:value=name
                                 on:input=move|e| set_name.set(event_target_value(&e))
                                 class="w-full px-4 py-3 bg-void border rounded-lg font-mono text-[13px] text-text-main outline-none transition-all focus:border-aurora-purple focus:shadow-[0_0_15px_rgba(123,44,191,0.15)]"
                                 class=("border-red-500", move || has_error("name"))
@@ -117,7 +124,7 @@ pub fn Contact() -> impl IntoView {
 
                         <div class="mb-2">
                             <label for="email-input" class="block font-mono text-[9px] tracking-[2px] uppercase mb-2 text-aurora-blue">"Email"</label>
-                            <input type="email" id="email-input" prop:value=email 
+                            <input type="email" id="email-input" prop:value=email
                                 on:input=move|e| set_email.set(event_target_value(&e))
                                 class="w-full px-4 py-3 bg-void border rounded-lg font-mono text-[13px] text-text-main outline-none transition-all focus:border-aurora-blue focus:shadow-[0_0_15px_rgba(58,134,255,0.15)]"
                                 class=("border-red-500", move || has_error("email"))
@@ -130,7 +137,7 @@ pub fn Contact() -> impl IntoView {
                         </div>
 
                     </div>
-                    
+
                     <div class="mt-6 mb-2">
                         <label for="subject-input" class="block font-mono text-[9px] tracking-[2px] uppercase mb-2 text-aurora-green">"Asunto"</label>
                         <input type="text" id="subject-input" prop:value=subject
@@ -140,7 +147,7 @@ pub fn Contact() -> impl IntoView {
                             class=("border-gray-deep", move || !has_error("subject"))
                             placeholder="Asunto" required minlength="3" />
                         <Show when=move || has_error("subject")>
-                            <div class="font-mono text-[10px] text-red-500 mt-1.5">"El asunto debe tener al menos 3 caracteres"</div>
+                            <div class="font-mono text-[10px] text-red-500 mt-1.5">"El asunto debe tener al menos 3 caracteres."</div>
                         </Show>
                     </div>
 
@@ -153,7 +160,7 @@ pub fn Contact() -> impl IntoView {
                             class=("border-gray-deep", move || !has_error("message"))
                             placeholder="Hola, mi dinosaurio favorito es..." required minlength="10"></textarea>
                         <Show when=move || has_error("message")>
-                            <div class="font-mono text-[10px] text-red-500 mt-1.5">"El mensaje debe tener al menos 10 caracteres"</div>
+                            <div class="font-mono text-[10px] text-red-500 mt-1.5">"El mensaje debe tener al menos 10 caracteres."</div>
                         </Show>
                     </div>
 
@@ -165,16 +172,16 @@ pub fn Contact() -> impl IntoView {
                             {move || if submited.get() {
                                 view!{ <span>"[ SEÑAL TRANSMITIDA ✓ ]"</span> }.into_any()
                             } else if submitting.get() {
-                                view!{ 
+                                view!{
                                     <div class="w-3 h-3 rounded-full border-2 border-white/30 border-t-white animate-spin"></div>
-                                    <span>"[ ENCRIPTANDO... ]"</span> 
+                                    <span>"[ ENCRIPTANDO... ]"</span>
                                 }.into_any()
                             } else {
                                 view!{ <span>"[ TRANSMITIR MENSAJE ]"</span> }.into_any()
                             }}
                         </span>
                     </button>
-                    
+
                     // NUEVO: Mensaje de error del servidor
                     <Show when=move || server_error.get()>
                         <div class="mt-4 text-center font-mono text-[10px] tracking-widest text-red-500 bg-red-500/10 border border-red-500/30 py-3 rounded-lg animate-pulse">
@@ -191,13 +198,14 @@ pub fn Contact() -> impl IntoView {
 async fn enviar_a_servidor(datos: FormularioGenerico) -> Result<bool, reqwest::Error> {
     let cliente = reqwest::Client::new();
 
-    let respuesta = cliente.post("https://api.web3forms.com/submit")
-                    .json(&datos)
-                    .send()
-                    .await?;
+    let respuesta = cliente
+        .post("https://api.web3forms.com/submit")
+        .json(&datos)
+        .send()
+        .await?;
     if respuesta.status().is_success() {
         Ok(true)
-    }else{
+    } else {
         Ok(false)
     }
 }

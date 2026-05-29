@@ -4,9 +4,9 @@ use leptos::prelude::*;
 pub fn Terminal() -> impl IntoView {
     view! {
         <section id="acerca" class="relative py-24 px-6 md:px-12 z-[2]" aria-label="Sección Acerca de mí">
-            
+
             <div class="max-w-[1100px] mx-auto">
-                
+
                 // TÍTULO
                 <div class="flex items-center gap-4 mb-12">
                     <h2 class="font-oxanium text-3xl md:text-5xl font-bold text-text-heading">
@@ -17,10 +17,10 @@ pub fn Terminal() -> impl IntoView {
                 </div>
 
                 // 2. GRID DE CONTENIDO (Terminal + Timeline)
-               
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-                    // CARD TERMINAL    
+                    // CARD TERMINAL
                     <div class="terminal reveal-left w-full shadow-xl">
                         // Barra superior
                         <div class="terminal-bar">
@@ -36,7 +36,7 @@ pub fn Terminal() -> impl IntoView {
 
                         // Contenido de la Terminal
                         <div class="p-6 md:p-8 text-sm md:text-base font-mono leading-relaxed text-gray">
-                            
+
                             // Comando 1: whoami
                             <div class="mb-4">
                                 <span class="text-aurora-green-light">"horacio@root-system"</span>
@@ -44,17 +44,17 @@ pub fn Terminal() -> impl IntoView {
                                 <span class="text-aurora-blue-light">"~"</span>
                                 <span class="text-text-main">"$ cat whoami.txt"</span>
                             </div>
-                            
+
                             // Respuesta 1
                             <div class="mb-8 pl-4 border-l-2 border-aurora-purple/30 text-gray">
                                 <p class="mb-3">
-                                    "¡Hola! Soy Horacio, Ingeniero en Ciencias Computacionales."
+                                    "¡Hola! Soy Horacio, ingeniero en Ciencias Computacionales."
                                 </p>
                                 <p class="mb-3">
-                                    "Me especializo en construir herramientas y experiencias digitales escalables, abarcando todo el espectro del desarrollo, desde el frontend  hasta backend."
+                                    "Me especializo en construir herramientas y experiencias digitales escalables, abarcando todo el espectro del desarrollo, desde el frontend hasta el backend."
                                 </p>
                                 <p>
-                                    "Cuando no estoy escribiendo código  o creando interfaces, probablemente me encuentres jugando videojuegos (gamer de corazón) o investigando datos curiosos (Team Triceratops & Spinosaurus 🦕)."
+                                    "Cuando no estoy escribiendo código o creando interfaces, probablemente me encuentres jugando videojuegos (gamer de corazón) o investigando datos curiosos (Team Triceratops & Spinosaurus 🦕)."
                                 </p>
                             </div>
 
@@ -65,11 +65,11 @@ pub fn Terminal() -> impl IntoView {
                                 <span class="text-aurora-blue-light">"~"</span>
                                 <span class="text-text-main">"$ ./fetch_core_modules.sh"</span>
                             </div>
-                            
+
                             // Respuesta 2
                             <div class="mb-8 pl-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-aurora-purple">
                                 <div class="flex items-center gap-2">
-                                    <span class="text-aurora-blue-light">">"</span> "Desarrollo Full-Stack"
+                                    <span class="text-aurora-blue-light">">"</span> "Desarrollo Full‑Stack"
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <span class="text-aurora-blue-light">">"</span> "UI/UX"
@@ -78,7 +78,7 @@ pub fn Terminal() -> impl IntoView {
                                     <span class="text-aurora-blue-light">">"</span> "Experiencia con IA"
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-aurora-blue-light">">"</span> "Resolución de Problemas"
+                                    <span class="text-aurora-blue-light">">"</span> "Resolución de problemas"
                                 </div>
                             </div>
 
@@ -94,30 +94,30 @@ pub fn Terminal() -> impl IntoView {
                     </div>
 
                     // TIMELINE
-                    
+
                     <div class="reveal-right w-full lg:pl-10 flex flex-col h-full justify-between">
                         <div class="relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-aurora-purple before:via-aurora-blue before:to-aurora-green">
-                            <TimeLineItem 
+                            <TimeLineItem
                                 year="2023 — PRESENTE"
                                 role="Jr Full-Stack Developer"
-                                company="IT-Seekers."
-                                desc="Experiencia en desarollo de apis en Express, en .Net y en el forntend se uso Angular y React"
+                                company="IT-Seekers"
+                                desc="Experiencia en desarrollo de APIs en Express y .NET; en el frontend se usó Angular y React."
                                 color="blue"
                             />
-                            <TimeLineItem 
+                            <TimeLineItem
                                 year="2022 — 2023"
                                 role="Practicante"
                                 company="Sharevolts"
-                                desc="Desarrollo en power automate con aplicaciones de prueba y gestión de entornos empresariales con Microsoft 365.."
+                                desc="Desarrollo con Power Automate para aplicaciones de prueba y gestión de entornos empresariales con Microsoft 365."
                                 color="green"
                             />
-                            
+
                         </div>
 
                         <div class="mt-8 pt-6 flex sm:justify-start justify-center">
-                            <a 
+                            <a
                                 target="_blank"
-                                href="public/cv-horacio.pdf" 
+                                href="public/cv-horacio.pdf"
                                 class="crystal-btn-primary flex items-center justify-center gap-3 no-underline w-full sm:w-auto"
                             >
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,17 +134,23 @@ pub fn Terminal() -> impl IntoView {
 }
 
 #[component]
-fn TimeLineItem(#[prop(into)] year: String, #[prop(into)] role: String, #[prop(into)] company: String, #[prop(into)] desc: String, #[prop(into)] color: String) -> impl IntoView {
+fn TimeLineItem(
+    #[prop(into)] year: String,
+    #[prop(into)] role: String,
+    #[prop(into)] company: String,
+    #[prop(into)] desc: String,
+    #[prop(into)] color: String,
+) -> impl IntoView {
     let dot_color = match color.as_str() {
-      "purple" => "bg-aurora-purple-glow",
-      "blue" => "bg-aurora-blue-light",
-      "green" => "bg-aurora-green-light",
-      _ => "bg-gray-light",
+        "purple" => "bg-aurora-purple-glow",
+        "blue" => "bg-aurora-blue-light",
+        "green" => "bg-aurora-green-light",
+        _ => "bg-gray-light",
     };
 
     let role_color = match color.as_str() {
-        "purple" => "text-aurora-purple-light", 
-        "blue" => "text-aurora-blue-light",     
+        "purple" => "text-aurora-purple-light",
+        "blue" => "text-aurora-blue-light",
         "green" => "text-aurora-green-light",
         _ => "text-text-main",
     };
@@ -153,7 +159,7 @@ fn TimeLineItem(#[prop(into)] year: String, #[prop(into)] role: String, #[prop(i
         <div class="pl-8 pb-8 relative group">
             // Diamante en la línea
             <div class={format!("absolute -left-[4.5px] top-1 w-2.5 h-2.5 rounded-full border-2 border-void transition-all duration-300 group-hover:scale-150 {}", dot_color)}></div>
-            
+
             // Contenido
             <div class="font-mono text-[10px] tracking-[2px] text-gray mb-1">{year}</div>
             <div class={format!("font-figtree text-lg md:text-xl font-bold {}", role_color)}>{role}</div>

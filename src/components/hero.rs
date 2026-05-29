@@ -1,6 +1,7 @@
+use crate::utils::{
+    particles::init_particles, scroll::use_reveal_observer, typewriter::use_typewriter,
+};
 use leptos::prelude::*;
-use crate::utils::{particles::init_particles, typewriter::use_typewriter, scroll::use_reveal_observer,};
-
 
 #[component]
 pub fn Hero() -> impl IntoView {
@@ -10,12 +11,12 @@ pub fn Hero() -> impl IntoView {
     init_particles(canvas_ref);
 
     let typewriter_text = use_typewriter(vec![
-        "Desarollador web...",
-        "Gamer...",
+        "Desarrollando para la web...",
+        "Jugando...",
         "Optimizando para la experiencia humana...",
-        "Estudiante constante...",
-        "Desplegar todo el espectro...",
-        "Dinosuario favorito el ticeraptor y spinosuario...",
+        "Estudiando constantemente...",
+        "Desplegando todo el espectro...",
+        "Dinosaurios favoritos: el triceraptor y el spinosauro...",
     ]);
 
     view! {
@@ -36,30 +37,30 @@ pub fn Hero() -> impl IntoView {
                         <span>"PORTAFOLIO ONLINE // PORTAFOLIO V1.0"</span>
                  </div>
 
-                //Titulo
+                //Título
                 <h1 class="reveal font-sans text-[clamp(3.5rem,12vw,9rem)] font-extrabold tracking-[3px] leading-[0.95] my-6 text-text-heading">
                     <span class="glitch" data-text="HORACIO">"HORACIO"</span>
                     <br/>
                     <span class="aurora-text text-[0.5em] font-light tracking-[4px]">"ING. CIENCIAS COMPUTACIONALES"</span>
                 </h1>
 
-                //maquina de escribir
+                //máquina de escribir
                 <div class="reveal mt-5 min-h-[1.5em]">
                     <span class="font-mono text-[clamp(0.9rem,2vw,1.2rem)] text-gray typing-cursor" role="status" aria-live="polite">
                         {move || typewriter_text.get()}
                     </span>
                 </div>
 
-                //DESCRIPCION
-                <p class=" reveal max-w-[480px] mt-6 text-gray-ligt text-sm md:text-base leading-relaxed font-figtree">
-                    "Creando expereicnias y herramientas digitales a través de todo el espectro del código."
+                //DESCRIPCIÓN
+                <p class=" reveal max-w-[480px] mt-6 text-gray-light text-sm md:text-base leading-relaxed font-figtree">
+                    "Creando experiencias y herramientas digitales a través de todo el espectro del código."
                 </p>
 
                 //Botones
                 <div class="reveal flex gap-4 flex-wrap mt-10 items-center">
-                    <a 
+                    <a
                         target="_blank"
-                        href="public/cv-horacio.pdf" 
+                        href="public/cv-horacio.pdf"
                         class="crystal-btn-primary flex items-center justify-center gap-2 no-underline"
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +78,7 @@ pub fn Hero() -> impl IntoView {
 
                 <div class="reveal grid grid-cols-4 gap-4 mt-12 max-md:grid-cols-2 mb-2">
                     <BentoCard value="10+" label="Proyectos" color="purple" />
-                    <BentoCard value="2" label="Años Exp." color="blue" />
+                    <BentoCard value="2" label="Años exp." color="blue" />
                     <BentoCard value="8" label="Lenguajes" color="green" />
                     //Carta de disponibilidad
                     <div class="reveal glass rounded-2xl p-5 flex items-center gap-3 hover:border-aurora-purple-light/50 hover:-translate-y-1 transition-all duration-300 shadow-sm">
@@ -90,8 +91,8 @@ pub fn Hero() -> impl IntoView {
                 </div>
 
             </div>
-                //iNDICADOR DE SCROOL
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex felx-col item-center gap-2 opacity-40">
+                //Indicador de scroll
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
                 <span class="font-mono text-[9px] tracking-[3px] text-gray-mid uppercase">"Scroll"</span>
                 <div class="w-px h-12 bg-gradient-to-b from-aurora-purple to-transparent animate-scroll-pulse"></div>
             </div>
@@ -100,7 +101,11 @@ pub fn Hero() -> impl IntoView {
 }
 
 #[component]
-fn BentoCard( #[prop(into)] value: String, #[prop(into)] label: String, #[prop(into)] color: String) -> impl  IntoView {
+fn BentoCard(
+    #[prop(into)] value: String,
+    #[prop(into)] label: String,
+    #[prop(into)] color: String,
+) -> impl IntoView {
     let color_class = match color.as_str() {
         "purple" => "text-aurora-purple",
         "blue" => "text-aurora-blue",
