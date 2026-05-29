@@ -1,18 +1,12 @@
 use leptos::prelude::*;
 use leptos::task::spawn_local;
+use leptos_use::{use_color_mode_with_options, ColorMode, UseColorModeOptions, UseColorModeReturn};
 use wasm_bindgen::JsCast;
 use web_sys::window;
-use leptos_use::{ColorMode, UseColorModeOptions, UseColorModeReturn use_color_mode_with_options};
 
 #[component]
 pub fn Navigation() -> impl IntoView {
-    let secciones = [
-        "inicio",
-        "acerca",
-        "habilidades",
-        "proyectos",
-        "contacto",
-    ];
+    let secciones = ["inicio", "acerca", "habilidades", "proyectos", "contacto"];
 
     let (active_section, set_active_section) = signal("inicio".to_string());
 
@@ -35,8 +29,10 @@ pub fn Navigation() -> impl IntoView {
             }
         };
 
-        let clousre = wasm_bindgen::closure::Closure::wrap(Box::new(on_scroll) as Box<dyn FnMut(_)>);
-        win.add_event_listener_with_callback("scroll", clousre.as_ref().unchecked_ref()).unwrap();
+        let clousre =
+            wasm_bindgen::closure::Closure::wrap(Box::new(on_scroll) as Box<dyn FnMut(_)>);
+        win.add_event_listener_with_callback("scroll", clousre.as_ref().unchecked_ref())
+            .unwrap();
         clousre.forget(); //esto deja vivo siempre el evento
     });
 
@@ -134,7 +130,6 @@ pub fn Navigation() -> impl IntoView {
 
 #[component]
 pub fn ThemeToggle() -> impl IntoView {
-
     let opciones = UseColorModeOptions::default()
         .attribute("class") // Inyecta la clase en el <html>
         .storage_key("color-scheme"); // Coincide con nuestro script de arriba
